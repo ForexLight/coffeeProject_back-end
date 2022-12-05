@@ -8,10 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RolesModule = void 0;
 const common_1 = require("@nestjs/common");
+const roles_service_1 = require("./roles.service");
+const roles_controller_1 = require("./roles.controller");
+const sequelize_1 = require("@nestjs/sequelize");
+const roles_model_1 = require("./roles.model");
+const users_model_1 = require("../users/users.model");
+const user_roles_model_1 = require("./user-roles.model");
 let RolesModule = class RolesModule {
 };
 RolesModule = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        providers: [roles_service_1.RolesService],
+        controllers: [roles_controller_1.RolesController],
+        imports: [
+            sequelize_1.SequelizeModule.forFeature([roles_model_1.Role, users_model_1.User, user_roles_model_1.UserRoles])
+        ],
+        exports: [roles_service_1.RolesService]
+    })
 ], RolesModule);
 exports.RolesModule = RolesModule;
 //# sourceMappingURL=roles.module.js.map

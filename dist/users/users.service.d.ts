@@ -1,8 +1,10 @@
 import { User } from "./users.model";
 import { UserDto } from "./dto/create-user.dto";
+import { RolesService } from "../roles/roles.service";
 export declare class UsersService {
     private userRepository;
-    constructor(userRepository: typeof User);
+    private roleService;
+    constructor(userRepository: typeof User, roleService: RolesService);
     createUser(userDto: UserDto): Promise<User>;
     getAllUsers(): Promise<User[]>;
 }

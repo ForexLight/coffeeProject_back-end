@@ -13,6 +13,8 @@ const users_module_1 = require("./users/users.module");
 const config_1 = require("@nestjs/config");
 const users_model_1 = require("./users/users.model");
 const roles_module_1 = require("./roles/roles.module");
+const roles_model_1 = require("./roles/roles.model");
+const user_roles_model_1 = require("./roles/user-roles.model");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -28,7 +30,7 @@ AppModule = __decorate([
                 username: process.env.POSTGRES_USER,
                 password: process.env.POSTGRES_PASSWORD,
                 database: process.env.POSTGRES_DB,
-                models: [users_model_1.User],
+                models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles],
                 autoLoadModels: true
             }),
             users_module_1.UsersModule,
