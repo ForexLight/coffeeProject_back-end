@@ -7,4 +7,5 @@ export declare class UsersService {
     constructor(userRepository: typeof User, roleService: RolesService);
     createUser(userDto: UserDto): Promise<User>;
     getAllUsers(): Promise<User[]>;
+    getUserByEmail(email: string): Promise<User>;
 }
