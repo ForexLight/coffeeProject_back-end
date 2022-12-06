@@ -37,6 +37,22 @@ let UsersService = class UsersService {
         const user = await this.userRepository.findOne({ where: { email }, include: { all: true } });
         return user;
     }
+    async addRole(dto) {
+        const user = await this.userRepository.findByPk(dto.userId);
+        const role = await this.roleService.getRoleByValue(dto.value);
+        if (role && user) {
+            await user.$add('role', role.id);
+            return dto;
+        }
+        throw new common_1.HttpException('user or role is undefined', common_1.HttpStatus.NOT_FOUND);
+    }
+    async ban(dto) {
+        const user = await this.userRepository.findByPk(dto.userId);
+        user.banned = true;
+        user.banReason = dto.reason;
+        await user.save();
+        return user;
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
