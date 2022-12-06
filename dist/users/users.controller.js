@@ -19,6 +19,8 @@ const users_service_1 = require("./users.service");
 const swagger_1 = require("@nestjs/swagger");
 const users_model_1 = require("./users.model");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const roles_auth_derorator_1 = require("../auth/roles-auth.derorator");
+const roles_guard_1 = require("../auth/roles.guard");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -47,6 +49,8 @@ __decorate([
     }),
     (0, swagger_1.ApiResponse)({ status: 200, type: [users_model_1.User] }),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, roles_auth_derorator_1.Roles)("ADMIN"),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
