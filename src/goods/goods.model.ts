@@ -11,30 +11,28 @@ import {Role} from "../roles/roles.model";
 import {UserRoles} from "../roles/user-roles.model";
 import {User} from "../users/users.model";
 
-interface PostCreationAttrs {
-    title: string
-    content: string
-    userId: string
-    image: string
+interface GoodCreationAttrs {
+    id: number
+    name: string
+    price: number
+    category:string
+    img: string
 }
-@Table({tableName: 'posts'})
-export class Post extends Model<Post, PostCreationAttrs>{
+@Table({tableName: 'goods'})
+export class Goods extends Model<Goods, GoodCreationAttrs>{
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
 
-    @Column({type: DataType.STRING, unique: true, allowNull: false})
-    title: string;
+    @Column({type: DataType.STRING, allowNull: false})
+    name: string;
 
     @Column({type: DataType.STRING, allowNull: false})
-    content: string;
+    price: number;
+
+    @Column({type: DataType.STRING, allowNull: false})
+    category: string
 
     @Column({type: DataType.STRING})
-    image: string;
+    img: string;
 
-    @ForeignKey(() => User)
-    @Column({type: DataType.INTEGER})
-    userId: number
-
-    @BelongsTo(() => User)
-    author: User
 }

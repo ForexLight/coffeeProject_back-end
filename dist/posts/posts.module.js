@@ -10,12 +10,20 @@ exports.PostsModule = void 0;
 const common_1 = require("@nestjs/common");
 const posts_service_1 = require("./posts.service");
 const posts_controller_1 = require("./posts.controller");
+const sequelize_1 = require("@nestjs/sequelize");
+const posts_model_1 = require("./posts.model");
+const users_model_1 = require("../users/users.model");
+const files_module_1 = require("../files/files.module");
 let PostsModule = class PostsModule {
 };
 PostsModule = __decorate([
     (0, common_1.Module)({
         providers: [posts_service_1.PostsService],
-        controllers: [posts_controller_1.PostsController]
+        controllers: [posts_controller_1.PostsController],
+        imports: [
+            sequelize_1.SequelizeModule.forFeature([users_model_1.User, posts_model_1.Post]),
+            files_module_1.FilesModule
+        ]
     })
 ], PostsModule);
 exports.PostsModule = PostsModule;

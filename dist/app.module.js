@@ -17,11 +17,19 @@ const roles_model_1 = require("./roles/roles.model");
 const user_roles_model_1 = require("./roles/user-roles.model");
 const auth_module_1 = require("./auth/auth.module");
 const posts_module_1 = require("./posts/posts.module");
+const posts_model_1 = require("./posts/posts.model");
+const files_module_1 = require("./files/files.module");
+const serve_static_1 = require("@nestjs/serve-static");
+const path = require("path");
+const goods_module_1 = require("./goods/goods.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: path.resolve(__dirname, 'static')
+            }),
             config_1.ConfigModule.forRoot({
                 envFilePath: `.${process.env.NODE_ENV}.env`
             }),
@@ -32,13 +40,15 @@ AppModule = __decorate([
                 username: process.env.POSTGRES_USER,
                 password: process.env.POSTGRES_PASSWORD,
                 database: process.env.POSTGRES_DB,
-                models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles],
+                models: [users_model_1.User, roles_model_1.Role, user_roles_model_1.UserRoles, posts_model_1.Post],
                 autoLoadModels: true
             }),
             users_module_1.UsersModule,
             roles_module_1.RolesModule,
             auth_module_1.AuthModule,
-            posts_module_1.PostsModule
+            posts_module_1.PostsModule,
+            files_module_1.FilesModule,
+            goods_module_1.GoodsModule
         ],
         controllers: [],
         providers: []

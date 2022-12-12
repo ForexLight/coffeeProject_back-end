@@ -5,7 +5,7 @@ const app_module_1 = require("./app.module");
 const swagger_1 = require("@nestjs/swagger");
 const validation_pipe_1 = require("./pipes/validation.pipe");
 async function start() {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, { cors: true });
     const PORT = process.env.PORT || 3000;
     const config = new swagger_1.DocumentBuilder()
         .setTitle('nest app')
