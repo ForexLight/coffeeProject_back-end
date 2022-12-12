@@ -22,6 +22,7 @@ const files_module_1 = require("./files/files.module");
 const serve_static_1 = require("@nestjs/serve-static");
 const path = require("path");
 const goods_module_1 = require("./goods/goods.module");
+const orders_module_1 = require("./orders/orders.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -48,7 +49,8 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             posts_module_1.PostsModule,
             files_module_1.FilesModule,
-            goods_module_1.GoodsModule
+            goods_module_1.GoodsModule,
+            orders_module_1.OrdersModule
         ],
         controllers: [],
         providers: []

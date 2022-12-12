@@ -13,6 +13,7 @@ import { FilesModule } from './files/files.module';
 import {ServeStaticModule} from "@nestjs/serve-static";
 import * as path from "path";
 import {GoodsModule} from "./goods/goods.module";
+import {OrdersModule} from "./orders/orders.module";
 
 @Module({
     imports: [
@@ -37,7 +38,8 @@ import {GoodsModule} from "./goods/goods.module";
         AuthModule,
         PostsModule,
         FilesModule,
-        GoodsModule
+        GoodsModule,
+        OrdersModule
     ],
     controllers: [],
     providers: []
