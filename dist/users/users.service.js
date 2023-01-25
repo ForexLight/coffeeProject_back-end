@@ -53,6 +53,13 @@ let UsersService = class UsersService {
         await user.save();
         return user;
     }
+    async delete(id) {
+        return await this.userRepository.destroy({
+            where: {
+                id: id
+            }
+        });
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),

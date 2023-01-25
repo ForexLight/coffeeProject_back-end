@@ -20,4 +20,18 @@ export class OrdersController {
     getOrders(){
         return this.ordersService.getAllOrders()
     }
+
+    @Get('/day')
+    getTodayOrders(){
+        return this.ordersService.getTodayOrders()
+    }
+    @Get('/week')
+    getWeekOrders(){
+        return this.ordersService.getWeekOrders()
+    }
+
+    @Get('/month')
+    getMonthOrders(){
+        return this.ordersService.getMonthOrders()
+    }
 }

@@ -12,4 +12,5 @@ export declare class UsersService {
     getUserByEmail(email: string): Promise<User>;
     addRole(dto: AddRoleDto): Promise<AddRoleDto>;
     ban(dto: BanUserDto): Promise<User>;
+    delete(id: number): Promise<number>;
 }

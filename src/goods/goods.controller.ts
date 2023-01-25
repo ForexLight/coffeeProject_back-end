@@ -4,7 +4,7 @@ import {
     Post,
     UploadedFile,
     UseInterceptors,
-    Delete, Get
+    Delete, Get, Query, Param
 } from '@nestjs/common';
 import {GoodsService} from "./goods.service";
 import {CreateGoodDto} from "./dto/create-post.dto";
@@ -25,8 +25,8 @@ export class GoodsController {
         return this.goodsService.create(dto, image)
     }
 
-    @Delete()
-    deleteItem(@Body() id: number) {
+    @Delete(':id')
+    deleteItem(@Param('id') id: number) {
         return this.goodsService.delete(id)
     }
 }

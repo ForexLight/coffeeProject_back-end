@@ -39,6 +39,9 @@ let UsersController = class UsersController {
     ban(dto) {
         return this.usersService.ban(dto);
     }
+    deleteItem(id) {
+        return this.usersService.delete(id);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({
@@ -92,6 +95,20 @@ __decorate([
     __metadata("design:paramtypes", [ban_user_dto_1.BanUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "ban", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({
+        summary: 'delete user'
+    }),
+    (0, swagger_1.ApiResponse)({ status: 200 }),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, roles_auth_derorator_1.Roles)('ADMIN'),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "deleteItem", null);
 UsersController = __decorate([
     (0, swagger_1.ApiTags)('users'),
     (0, common_1.Controller)('users'),
